@@ -1,0 +1,35 @@
+<!-- currency_template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Курс доллара к рублю</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <h1>Курс доллара к рублю</h1>
+
+    <div id="exchange-rate">
+        {% if usd_to_rub_rate %}
+            <p>Текущий курс: 1 USD = {{ usd_to_rub_rate }} RUB</p>
+        {% else %}
+            <p>Курс недоступен</p>
+        {% endif %}
+    </div>
+
+    <div id="last-10-rates">
+        <h2>Последние 10 запросов</h2>
+        <ul>
+            {% for rate in last_10_rates %}
+                <li>{{ rate.timestamp }}: 1 USD = {{ rate.usd_to_rub }} RUB</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+        // Автообновление страницы каждые 10 секунд
+        setInterval(function() {
+            location.reload();
+        }, 10000);
+    </script>
+</body>
+</html>

@@ -9,6 +9,7 @@ django = "*"
 django-debug-toolbar = "*"
 ipython = "*"
 django-extensions = "*"
+requests = "*"
 
 [dev-packages]
 
